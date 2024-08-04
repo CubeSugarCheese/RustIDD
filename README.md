@@ -46,6 +46,10 @@ cargo install --locked cargo-make --no-default-features --features tls-native
 ```
 ### 构建
 
+## 已知问题
+如果你曾经安装了 esp32 rust 工具链，`LIBCLANG_PATH` 可能会指向该工具链内部的修改版 clang，导致构建失败，请检查其值并重新设置。
+参见[issues-107](https://github.com/microsoft/windows-drivers-rs/issues/107)
+
 ## 参考
 1. [虚拟显示器终极解决方案 **IndirectDisplay**](https://mozz.ie/posts/ultimate-virtual-monitor-solution-indirect-display/)
 2. [Windows IDD sample](https://github.com/Microsoft/Windows-driver-samples/tree/main/video/IndirectDisplay)

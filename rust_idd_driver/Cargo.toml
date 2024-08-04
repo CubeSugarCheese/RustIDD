@@ -1,0 +1,19 @@
+[package]
+name = "rust_idd_driver"
+version = "0.1.0"
+edition = "2021"
+
+[package.metadata.wdk]
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+paste = "1.0.15"
+wdk = "0.2.0"
+wdk-alloc = "0.2.0"
+wdk-panic = "0.2.0"
+wdk-sys = "0.2.0"
+
+[build-dependencies]
+wdk-build = "0.2.0"

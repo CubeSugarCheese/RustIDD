@@ -1,3 +1,11 @@
 [workspace]
 resolver = "2"
 members = ["app", "rust_idd_driver"]
+
+[profile.dev]
+panic = "abort"
+lto = true # optional setting to enable Link Time Optimizations
+
+[profile.release]
+panic = "abort"
+lto = true # optional setting to enable Link Time Optimizations
