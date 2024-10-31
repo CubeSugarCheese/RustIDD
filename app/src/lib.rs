@@ -18,7 +18,7 @@ impl SwDevice {
         parent_device_instance: impl Param<PCWSTR>,
         create_info: &SW_DEVICE_CREATE_INFO,
         properties: Option<&[DEVPROPERTY]>,
-        callback: Option<unsafe extern "system" fn(HSWDEVICE, HRESULT, *const CTX, PCWSTR)>,
+        callback: Option<unsafe extern "system" fn(HSWDEVICE, HRESULT, *const c_void, PCWSTR)>,
         context: Option<&CTX>,
     ) -> Result<Self, windows::core::Error> {
         unsafe {
@@ -27,8 +27,8 @@ impl SwDevice {
                 parent_device_instance,
                 ptr::from_ref(create_info),
                 properties,
-                transmute(callback), /* ! only use to change *const CTX to *const c_void ! */
-                context.map(|it| it as *const CTX as *const c_void),
+                callback,
+                context.map(|it| &raw const *it as *const c_void),
             )?;
             Ok(Self {
                 sw_device_handler: sw,
